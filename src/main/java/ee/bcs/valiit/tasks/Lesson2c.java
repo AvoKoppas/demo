@@ -4,6 +4,8 @@ public class Lesson2c {
 
     public static void main(String[] args) {
 
+        System.out.println(sequence3n(1, 10));
+
     }
 
     // TODO
@@ -27,7 +29,15 @@ public class Lesson2c {
     // kutsuge iga väärtuse korral välja meetodit getSeqLength
     // salvestage maha kõige suurem ja funktsiooni lõpus tagastage see
     public static int sequence3n(int x, int y) {
-        return 0;
+        int suurim = 0;
+        int kordused;
+        for (int i = x; i <= y; i++) {
+            kordused = getSeqLength(i);
+            if (kordused > suurim) {
+                suurim = kordused;
+            }
+        }
+        return suurim;
     }
 
     // TODO 2
@@ -35,17 +45,29 @@ public class Lesson2c {
     // x = 2 -> 2
     // kutsuge välja meetodit nextElement nii kaua kuni vastus tuleb 1
     // tagastage korduste arv + 1
-    public static int getSeqLength(int x){
-        return 0;
+    public static int getSeqLength(int x) {
+        int kordusteArv = 1;
+        while (x != 1) {
+            x = nextElement(x);
+            kordusteArv++;
+        }
+        return kordusteArv;
     }
 
     // TODO 1
     // x = 1 -> 4
     // x = 2 -> 1
     // x = 3 -> 10
-    public static int nextElement(int x){
+    public static int nextElement(int x) {
         // TODO tagasta sequence järgmine element
-        return 0;
+        if (x == 1) {
+            return x;
+        } else if (x % 2 == 0) {
+            x = x / 2;
+            return x;
+        } else {
+            x = x * 3 + 1;
+        }
+        return x;
     }
-
 }
