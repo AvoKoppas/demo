@@ -1,13 +1,16 @@
 package ee.bcs.valiit.testController;
 
+import ee.bcs.valiit.CodeWarsSmallGirl.Employee;
+import ee.bcs.valiit.CodeWarsSmallGirl.SomeDto;
 import ee.bcs.valiit.tasks.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class Controller {
+    public List<Employee> employeeList = new ArrayList<>();
 
     //http://localhost:8080/hello-world/Avo?action=Tere
     @GetMapping("hello-world/{nameInURL}")
@@ -174,6 +177,46 @@ public class Controller {
         return Lesson3.morseCode(a);
     }
 
-//    @GetMapping("")
-}
+    //    @GetMapping("lesson3Hard")
+    //   public int lesson3Hard(@PathVariable("a") int n){
+    //       return Lesson3Hard.lesson3Hard();
+//    }
+//}
+    //http://localhost:8080/DTO
+    @GetMapping("SomeDto")
+    public SomeDto someDto() {
+        SomeDto worker = new SomeDto();
+        worker.setName("Toivo");
+        worker.setAddress("Keila");
+        worker.setAge(36);
+        return worker;
+    }
 
+    //http://localhost:8080/Employee
+    @GetMapping("Employee")
+    public List<Employee> employee() {
+        return employeeList;
+    }
+
+    @GetMapping("Employee/{index}")
+    public Employee showOne(@PathVariable("index") int index) {
+        return employeeList.get(index);
+    }
+
+    @PostMapping("Employee")
+    public void addEmployee(@RequestBody Employee employee) {
+        employeeList.add(employee);
+    }
+
+
+    @PutMapping("Employee/{index}")
+    public void replaceEmployee(@PathVariable("index") int index, @RequestBody Employee employee) {
+        employeeList.set(index, employee);
+    }
+
+    @DeleteMapping("Employee/{index}")
+    public void deleteEmployee(@PathVariable("index") int index) {
+        employeeList.remove(index);
+    }
+
+}

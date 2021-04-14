@@ -20,13 +20,13 @@ public class Lesson4 {
             } else if (line.equalsIgnoreCase("Create account")) {
                 System.out.println("Please choose your account nr:");
                 String accountNr = scanner.nextLine();
-                System.out.println("Thank you. Your account nr is " + accountNr + ". And balance is 0.0");
+                System.out.println("Thank you. Your account nr is " + accountNr + " And balance is 0.0");
                 accountBalanceMap.put(accountNr, 0.0);
             } else if (line.equalsIgnoreCase("balance")) {
                 System.out.println("Enter the account you wish to check:");
                 String accountNr = scanner.nextLine();
                 double balance = accountBalanceMap.get(accountNr);
-                System.out.println("Your account " + accountNr + " has " + balance + "amount of money");
+                System.out.println("Your account " + accountNr + " has " + balance + " amount of money");
             } else if (line.equalsIgnoreCase("deposit Money")) {
                 System.out.println("Please enter your account number:");
                 String accountNr = scanner.nextLine();
@@ -43,12 +43,12 @@ public class Lesson4 {
             } else if (line.equalsIgnoreCase("withdraw")) {
                 System.out.println("Please enter your account number:");
                 String accountNr = scanner.nextLine();
-                System.out.println("You have" + accountBalanceMap.get(accountNr) + " Please enter the amount " +
-                        "you wish to withdraw: ");
+                System.out.println("You have " + accountBalanceMap.get(accountNr) +
+                        " Please enter the amount you wish to withdraw: ");
                 double withdraw = scanner.nextDouble();
                 if (withdraw < 0) {
                     System.out.println("Invalid amount. Negative was entered. Please choose " +
-                            "the amount again");
+                            " the amount again");
                     withdraw = scanner.nextDouble();
                 } else if (withdraw > accountBalanceMap.get(accountNr)) {
                     System.out.println("Not enough money on account. Maximum withdraw amount is "
@@ -58,7 +58,7 @@ public class Lesson4 {
                     double balance = accountBalanceMap.get(accountNr);
                     accountBalanceMap.put(accountNr, balance - withdraw);
                     System.out.println("Thank you. Your account " + accountNr + " " +
-                            "has " + accountBalanceMap.get(accountNr));
+                            " has " + accountBalanceMap.get(accountNr));
                 }
             } else if (line.equalsIgnoreCase("transfer")) {
                 System.out.println("Please choose account you want to transfer from:");
@@ -76,7 +76,7 @@ public class Lesson4 {
                     accountBalanceMap.put(transferFrom, fromBalance - transferAmount);
                     accountBalanceMap.put(transferTo, toBalance + transferAmount);
                     System.out.println("Taken account has " + accountBalanceMap.get(transferFrom) + " " +
-                            "and added account has " + accountBalanceMap.get(transferTo));
+                            " and added account has " + accountBalanceMap.get(transferTo));
                 }
             } else {
                 System.out.println("Unknown command");

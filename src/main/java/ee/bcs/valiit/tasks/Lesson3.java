@@ -144,8 +144,8 @@ public class Lesson3 {
         String a = "";      // loon uue Stringi, kuhu uus sõna kirja läheb
         for (int i = 0; i < text.length(); i++) {   // Tsükkel, mille eesmärk täita uue stringi pesad.
             // Tsükkel algab nullist ja läheb kuni vana stringi pikkuse lõpuni.
-            String l = text.substring(i, i + 1);    // pean looma lisa String, kuhu
-            a = a + morse.get(l) + " ";
+            String l = text.substring(i, i + 1); // pean looma lisa String, kuhu läheb iga õige täht kirja
+            a = a + morse.get(l) + " "; // uus string täitub siin
         }
         System.out.println(text + " = " + a);
         return a.trim();
