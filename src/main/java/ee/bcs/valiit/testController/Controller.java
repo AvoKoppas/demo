@@ -1,7 +1,7 @@
 package ee.bcs.valiit.testController;
 
-import ee.bcs.valiit.CodeWarsSmallGirl.Employee;
-import ee.bcs.valiit.CodeWarsSmallGirl.SomeDto;
+import ee.bcs.valiit.CodeWars.Employee;
+import ee.bcs.valiit.CodeWars.SomeDto;
 import ee.bcs.valiit.tasks.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -177,11 +177,6 @@ public class Controller {
         return Lesson3.morseCode(a);
     }
 
-    //    @GetMapping("lesson3Hard")
-    //   public int lesson3Hard(@PathVariable("a") int n){
-    //       return Lesson3Hard.lesson3Hard();
-//    }
-//}
     //http://localhost:8080/DTO
     @GetMapping("SomeDto")
     public SomeDto someDto() {
@@ -208,7 +203,6 @@ public class Controller {
         employeeList.add(employee);
     }
 
-
     @PutMapping("Employee/{index}")
     public void replaceEmployee(@PathVariable("index") int index, @RequestBody Employee employee) {
         employeeList.set(index, employee);
@@ -218,5 +212,10 @@ public class Controller {
     public void deleteEmployee(@PathVariable("index") int index) {
         employeeList.remove(index);
     }
+
+//    @GetMapping("Random")
+//    public String randomNumber() {
+//
+//    }
 
 }

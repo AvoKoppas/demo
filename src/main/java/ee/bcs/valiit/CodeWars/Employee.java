@@ -1,4 +1,4 @@
-package ee.bcs.valiit.CodeWarsSmallGirl;
+package ee.bcs.valiit.CodeWars;
 
 import java.util.ArrayList;
 import java.util.List;

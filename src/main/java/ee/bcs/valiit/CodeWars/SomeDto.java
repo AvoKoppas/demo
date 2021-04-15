@@ -1,4 +1,4 @@
-package ee.bcs.valiit.CodeWarsSmallGirl;
+package ee.bcs.valiit.CodeWars;
 
 public class SomeDto {
     public String name;
