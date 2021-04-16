@@ -3,7 +3,6 @@ package ee.bcs.valiit.ClassesCreated;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Employee {
     public String name;
     public String address;
@@ -32,8 +31,8 @@ public class Employee {
         employee1.setName("Mari");
         employee1.setAddress("Elva");
         List<Employee> list = new ArrayList<>();
-        list.add(employee);
-        list.add(employee1);
+//        list.add(employee);
+//        list.add(employee1);
         return list;
     }
 }

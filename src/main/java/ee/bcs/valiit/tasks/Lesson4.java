@@ -144,9 +144,7 @@ public class Lesson4 {
 //    }
 
 
-
 //Siit alates Postmani Mapping____________________________________________________________________
-
 
 
 }
