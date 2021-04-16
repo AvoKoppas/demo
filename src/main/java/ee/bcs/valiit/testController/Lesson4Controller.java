@@ -1,13 +1,16 @@
 package ee.bcs.valiit.testController;
 
+import ee.bcs.valiit.ClassesCreated.BankAccount;
 import ee.bcs.valiit.tasks.Lesson4;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class Lesson4Controller {
     //   public List<String, Double> bankClients = new ArrayList<>();
+    private static Map<String, Double> costumerList = new HashMap<>();
 
 
     //http://localhost:8080/createAccount/EE123/0.0
@@ -45,6 +48,8 @@ public class Lesson4Controller {
     }
 //Siit edasi tuleb Postmani osa harjutamine !!!!!!!!
 
-//    @GetMapping("create")
-  //  public
+    @PostMapping("createAccount//")
+    public void createAccount2(@RequestBody BankAccount request){
+        costumerList.put(request.getAccountNr(), request.getBalance());
+    }
 }

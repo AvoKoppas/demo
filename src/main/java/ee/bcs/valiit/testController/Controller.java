@@ -1,7 +1,7 @@
 package ee.bcs.valiit.testController;
 
-import ee.bcs.valiit.CodeWars.Employee;
-import ee.bcs.valiit.CodeWars.SomeDto;
+import ee.bcs.valiit.ClassesCreated.Employee;
+import ee.bcs.valiit.ClassesCreated.SomeDto;
 import ee.bcs.valiit.tasks.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -217,5 +217,6 @@ public class Controller {
 //    public String randomNumber() {
 //
 //    }
+
 
 }

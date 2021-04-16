@@ -1,4 +1,4 @@
-package ee.bcs.valiit.CodeWars;
+package ee.bcs.valiit.ClassesCreated;
 
 import java.util.ArrayList;
 import java.util.List;

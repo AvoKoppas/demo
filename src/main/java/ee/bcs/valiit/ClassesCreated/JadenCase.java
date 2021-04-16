@@ -1,4 +1,4 @@
-package ee.bcs.valiit.CodeWars;
+package ee.bcs.valiit.ClassesCreated;
 
 public class JadenCase {
 
