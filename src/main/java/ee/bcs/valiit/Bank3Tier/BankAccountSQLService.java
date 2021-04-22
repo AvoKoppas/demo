@@ -10,13 +10,16 @@ public class BankAccountSQLService {
     private BankAccountSQLRepo bankAccountSQLRepo;
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
+    @Autowired
+    private AccountRepository accountRepository;
 
     public void createAccount(String accountNr, Double initialBalance) {
-        bankAccountSQLRepo.createAccount(accountNr, initialBalance);
+        accountRepository.getOne(accountNr);
     }
 
     public Double getBalance(String accountNr) {
-        return bankAccountSQLRepo.initialBalance(accountNr);
+        return accountRepository.getOne(accountNr).getBalance();
+  //      return bankAccountSQLRepo.initialBalance(accountNr);
     }
 
     public void deposit(String accountNr, double deposit) {
