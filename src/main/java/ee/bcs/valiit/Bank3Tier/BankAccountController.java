@@ -2,10 +2,7 @@ package ee.bcs.valiit.Bank3Tier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BankAccountController {
@@ -20,13 +17,14 @@ public class BankAccountController {
     public String createAccount(@PathVariable("accountNr") String accountNr,
                                 @PathVariable("initialBalance") Double initialBalance) {
         bankAccountSQLService.createAccount(accountNr, initialBalance);
-        return "Account created!!";
+        return "Account created!! Your account name is " + accountNr + " with initial balance of " + initialBalance;
     }
 
     //http://localhost:8080/getBalance/Siim
     @GetMapping("getBalance/{accountNr}")
-    public Double getBalance(@PathVariable("accountNr") String accountNr) {
-        return bankAccountSQLService.getBalance(accountNr);
+    public String getBalance(@PathVariable("accountNr") String accountNr) {
+        bankAccountSQLService.getBalance(accountNr);
+        return accountNr + " has a balance of " + bankAccountSQLService.getBalance(accountNr);
     }
 
     //http://localhost:8080/deposit/Raimo/50
@@ -34,7 +32,7 @@ public class BankAccountController {
     public String deposit(@PathVariable("accountNr") String accountNr,
                           @PathVariable("deposit") double deposit) {
         bankAccountSQLService.deposit(accountNr, deposit);
-        return "Deposit made!!";
+        return "Deposit made!! Balance is " + bankAccountSQLService.getBalance(accountNr);
     }
 
     //http://localhost:8080/withdraw/Kaisa/50
@@ -42,7 +40,7 @@ public class BankAccountController {
     public String withdraw(@PathVariable("accountNr") String accountNr,
                            @PathVariable("withdraw") double withdraw) {
         bankAccountSQLService.withdraw(accountNr, withdraw);
-        return "Withdraw made";
+        return "Withdraw made, new balance of " + accountNr + " is " + bankAccountSQLService.getBalance(accountNr);
     }
 
     //http://localhost:8080/transfer/Kaisa/Ivan/50
@@ -51,6 +49,13 @@ public class BankAccountController {
                            @PathVariable("to") String toAccount,
                            @PathVariable("amount") double amount) {
         bankAccountSQLService.transfer(fromAccount, toAccount, amount);
-        return "Transfer made";
+        return "Transfer made, from balance is " + bankAccountSQLService.getBalance(fromAccount) +
+                " to balance is " + bankAccountSQLService.getBalance(toAccount);
+    }
+
+    @DeleteMapping("deleteOne/{accountNr}")
+    public String deleteOne(@PathVariable("accountNr") String accountNr) {
+        bankAccountSQLService.deleteOne(accountNr);
+        return "Account has been deleted";
     }
 }

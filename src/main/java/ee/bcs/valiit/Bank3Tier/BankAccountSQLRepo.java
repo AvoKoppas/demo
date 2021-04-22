@@ -29,19 +29,18 @@ public class BankAccountSQLRepo {
         return jdbcTemplate.queryForObject(sqlOldBalance, paramMapOldBalance, Double.class);
     }
 
-    public void finalBalanceDeposit(String accountNr, double balance) {
+    public void finalBalance(String accountNr, double balance) {
         String sql = "UPDATE account SET balance = :muutuja1 WHERE account_number = :muutuja2";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("muutuja1", balance);
         paramMap.put("muutuja2", accountNr);
+        jdbcTemplate.update(sql, paramMap);
+    }
+    public void deleteOne (String accountNr){
+        String sql = "DELETE FROM account WHERE account_number =:a";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("a", accountNr);
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public void finalBalanceWithdraw(String accountNr, double balance) {
-        String sql = "UPDATE account SET balance = :muutuja1 WHERE account_number = :muutuja2";
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("muutuja1", balance);
-        paramMap.put("muutuja2", accountNr);
-        jdbcTemplate.update(sql, paramMap);
-    }
 }
