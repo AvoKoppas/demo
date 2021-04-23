@@ -1,4 +1,4 @@
-package ee.bcs.valiit.Bank3Tier;
+package ee.bcs.valiit.hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,9 +7,9 @@ import javax.persistence.Id;
 public class Account {
     @Id
     private String accountNumber;
-    private int id;
+    private Integer id;
     private Double balance;
-    private boolean block;
+    private Boolean block;
 
     public String getAccountNr() {
         return accountNumber;
