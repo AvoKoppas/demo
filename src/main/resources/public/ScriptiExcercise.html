@@ -5,7 +5,87 @@
     <title>Title</title>
 </head>
 <body>
+<h1>Min</h1>
+a: <input id="minA"> b: <input id="minB">
+<button id="minButton">Min</button>
+<p> Vastus on: <span id="minAnswer"></span>
+</p>
+<script>
+    let minA = document.getElementById('minA');
+    let minB = document.getElementById('minB');
+    let minButton = document.getElementById('minButton');
+    minButton.onclick = function () {
+        let minAnswer = document.getElementById("minAnswer");
+        let a = minA.value;
+        let b = minB.value;
+        if (Number(a) < Number(b)) {
+            minAnswer.innerText = a;
+        } else {
+            minAnswer.innerText = b;
+        }
+    }
+</script>
 
+<h1>Max</h1>
+a: <input id="maxA"> b: <input id="maxB">
+<button id="maxButton">Max</button>
+<p> Vastus on: <span id="maxAnswer"></span>
+</p>
+<script>
+    let maxA = document.getElementById('maxA');
+    let maxB = document.getElementById('maxB');
+    let maxButton = document.getElementById('maxButton');
+    maxButton.onclick = function () {
+        let maxAnswer = document.getElementById("maxAnswer");
+        let a = maxA.value;
+        let b = maxB.value;
+        if (Number(a) > Number(b)) {
+            maxAnswer.innerText = a;
+        } else {
+            maxAnswer.innerText = b;
+        }
+    }
+</script>
+
+<h1>Absoluutarv</h1>
+abs: <input id="number">
+<button id="abs">Enter</button>
+<p> Vastus on: <span id="absoluut"></span>
+</p>
+<script>
+    let number = document.getElementById('number');
+    let button = document.getElementById('abs');
+    button.onclick = function () {
+        let absoluut = document.getElementById("absoluut");
+        let a = number.value;
+        if (Number(a) < 0) {
+            absoluut.innerText = -a;
+        } else {
+            absoluut.innerText = a;
+        }
+    }
+</script>
+<h1>Paarisarvu kalkulaator</h1>
+sisend: <input id="sisend">
+<button id="arv">Enter</button>
+<p> Vastus on: <span id="paarisArv"></span>
+</p>
+<script>
+    let paarisOrPaaritu = document.getElementById('sisend');
+    let enter = document.getElementById('arv');
+    enter.onclick = function () {
+        let paarisArv = document.getElementById("paarisArv");
+        let a = paarisOrPaaritu.value;
+        if (Number(a) % 2 === 0) {
+            paarisArv.innerText = a;
+        } else {
+            let String = "Paaritu arv"
+            String;
+        }
+    }
+
+
+</script>
 
 </body>
 </html>
