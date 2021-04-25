@@ -65,6 +65,8 @@ abs: <input id="number">
         }
     }
 </script>
+
+
 <h1>Paarisarvu kalkulaator</h1>
 sisend: <input id="sisend">
 <button id="arv">Enter</button>
@@ -77,15 +79,66 @@ sisend: <input id="sisend">
         let paarisArv = document.getElementById("paarisArv");
         let a = paarisOrPaaritu.value;
         if (Number(a) % 2 === 0) {
-            paarisArv.innerText = a;
+            paarisArv.innerText = "Paaris";
         } else {
-            let String = "Paaritu arv"
-            String;
+            paarisArv.innerText = "Paaritu";
         }
     }
-
-
 </script>
 
+
+<h1>Kolmest väikseim </h1>
+a: <input id="a">
+b: <input id="b">
+c: <input id="c">
+<button id="button2">Enter</button>
+<p> Vastus on: <span id="smallest"></span>
+</p>
+<script>
+    let valueA = document.getElementById("a");
+    let valueB = document.getElementById("b");
+    let valueC = document.getElementById("c");
+    let button2 = document.getElementById('button2');
+    button2.onclick = function () {
+        let smallest = document.getElementById("smallest");
+        let a = valueA.value;
+        let b = valueB.value;
+        let c = valueC.value;
+        if (a <= b && a <= c) {
+            smallest.innerText = a;
+        } else if (b <= a && b <= c) {
+            smallest.innerText = b;
+        } else {
+            smallest.innerText = c;
+        }
+    }
+</script>
+
+<h1>Kolmest suurim </h1>
+a: <input id="first">
+b: <input id="second">
+c: <input id="third">
+<button id="button3">Enter</button>
+<p> Vastus on: <span id="biggest"></span>
+</p>
+<script>
+    let first = document.getElementById("first");
+    let second = document.getElementById("second");
+    let third = document.getElementById("third");
+    let button3 = document.getElementById('button3');
+    button3.onclick = function () {
+        let biggest = document.getElementById("biggest");
+        let a = first.value;
+        let b = second.value;
+        let c = third.value;
+        if (a >= b && a >= c) {
+            biggest.innerText = a;
+        } else if (b >= a && b >= c) {
+            biggest.innerText = b;
+        } else {
+            biggest.innerText = c;
+        }
+    }
+</script>
 </body>
 </html>
