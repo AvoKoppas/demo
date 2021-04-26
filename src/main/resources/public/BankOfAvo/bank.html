@@ -1,30 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<input lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        /*body {background-color: powderblue}*/
-        /*h1{color: blue}*/
-        /*p.test {color: red}*/
+        body {
+            background-color: powderblue
+        }
+
+        h1 {
+            color: blue
+        }
+
+        p.test {
+            color: red
+        }
     </style>
-    <link rel="stylesheet" href="/css/StyleWebpage.css">
+    <!--    <link rel="stylesheet" href="/css/StyleWebpage.css">-->
 </head>
-<body>
 <h1>BANK OF AVO</h1>
 
 <ul>
-    <li>Create account
-        <td><input type="radio"></td>
-    <li>Get balance
-        <td><input type="radio"></td>
-    <li>Deposit
-        <td><input type="radio"></td>
-    <li>Withdraw
-        <td><input type="radio"></td>
-    <li>Transfer
-        <td><input type="radio"></td>
+    <li>Konto number
+        <td><input id="Account number"></td>
+    <li>Konto algseis
+        <td><input id="Initial Balance"></td>
+    <li>Makse
+        <td><input id="Deposit"></td>
+    <li>Väljavõte
+        <td><input id="Withdraw"></td>
+    <li>Ülekande sihtkonto
+        <td><input id="TransferTo"></td>
 </ul>
+
+<button id="Create">Loo konto</button>
+<button id="getBalanceButton">Küsi balanss</button>
+<button id="makeDepositButton">Sissemakse</button>
+<button id="withdrawButton">Väljavõte</button>
+<button id="transferButton">Ülekanne</button>
+<button id="deleteButton">Kustutamine</button>
+<script>
+    let accountNr = document.getElementById("Account number");
+    let balance = document.getElementById("Initial Balance");
+    let deposit = document.getElementById("Deposit");
+    let withdraw = document.getElementById("Withdraw");
+    let transferTo = document.getElementById("TransferTo");
+    let createButton = document.getElementById("Create");
+    let getBalanceButton = document.getElementById("getBalanceButton");
+    let depositButton = document.getElementById("makeDepositButton");
+    let withdrawButton = document.getElementById("withdrawButton");
+    let transferButton = document.getElementById("transferButton");
+    let deleteButton = document.getElementById("deleteButton");
+    // GETBALANCE function
+    getBalanceButton.onclick = function () {
+        let url = "http://localhost:8080/getBalance/"
+        let requestObject = {
+            'account Number': accountNr.value
+        }
+        fetch("http://localhost:8080/getBalance/" + accountNr.value)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+    // CREATEACCOUNT function
+    createButton.onclick = function () {
+        let url = "http://localhost:8080/createAccount/" + accountNr.value + "/" + balance.value;
+        let requestObject = {
+            'accountNr': accountNr.value,
+            'balance': balance.value,
+        }
+        let configuration = {
+            method: 'POST'
+        }
+        fetch(url, configuration)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+
+    // DEPOSIT function
+    depositButton.onclick = function () {
+        let url = "http://localhost:8080/deposit/" + accountNr.value + "/" + deposit.value;
+        let requestObject = {
+            'account Number': accountNr.value,
+            'deposit': deposit.value
+        }
+        let configuration1 = {
+            method: 'POST'
+        }
+        fetch(url, configuration1)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+
+    // WITHDRAW function
+    withdrawButton.onclick = function () {
+        let url = "http://localhost:8080/withdraw/" + accountNr.value + "/" + withdraw.value;
+        let requestObject = {
+            'account Number': accountNr.value,
+            'withdraw': withdraw.value
+        }
+        let configuration2 = {
+            method: 'POST'
+        }
+        fetch(url, configuration2)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+
+    // TRANSFER function
+    transferButton.onclick = function () {
+        let url = "http://localhost:8080/transfer/" + accountNr.value + "/" + transferTo.value + "/" + deposit.value;
+        let requestObject = {
+            'account Number': accountNr.value,
+            'transferTo': transferTo.value,
+            'deposit': deposit.value
+        }
+        let configuration3 = {
+            method: 'POST'
+        }
+        fetch(url, configuration3)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+    // DELETE account
+    deleteButton.onclick = function () {
+        let url = "http://localhost:8080/deleteOne/" + accountNr.value
+        let requestObject = {
+            'account Number': accountNr.value,
+        }
+        let configuration4 = {
+            method: 'DELETE'
+        }
+        fetch(url, configuration4)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
+
+
+</script>
+
+<!--<ul>-->
+<!--    <li>Create account-->
+<!--        <td><input type="radio"></td>-->
+<!--    <li>Get balance-->
+<!--        <td><input type="radio"></td>-->
+<!--    <li>Deposit-->
+<!--        <td><input type="radio"></td>-->
+<!--    <li>Withdraw-->
+<!--        <td><input type="radio"></td>-->
+<!--    <li>Transfer-->
+<!--        <td><input type="radio"></td>-->
+<!--</ul>-->
+
+
 <!--<ol>-->
 <!--    <li>test1</li>-->
 <!--    <li>test2</li>-->
@@ -67,11 +206,6 @@
 <!--    </tr>-->
 
 
-
 </table>
-<script>
-    alert('Hello, world');
-    alert('wtf');
-</script>
 </body>
 </html>

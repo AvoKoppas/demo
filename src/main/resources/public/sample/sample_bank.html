@@ -37,10 +37,12 @@
         }
         fetch("http://localhost:8080/sample/bank/account/" + accountNumber.value)
             .then(response => response.text())
-            .then(function(response){ // selle asemel ma võiksin kirjutada response => alert(response)
+            .then(function (response) { // selle asemel ma võiksin kirjutada response => alert(response)
                 alert(response)
             })
     }
+
+
 </script>
 </body>
 </html>

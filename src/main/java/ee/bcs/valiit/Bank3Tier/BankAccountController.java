@@ -12,14 +12,16 @@ public class BankAccountController {
     @Autowired
     BankAccountSQLService bankAccountSQLService;
 
+    @CrossOrigin
     //http://localhost:8080/createAccount/Siim/1267.89
-    @PutMapping("createAccount/{accountNr}/{initialBalance}")
+    @PostMapping("createAccount/{accountNr}/{initialBalance}")
     public String createAccount(@PathVariable("accountNr") String accountNr,
                                 @PathVariable("initialBalance") Double initialBalance) {
         bankAccountSQLService.createAccount(accountNr, initialBalance);
         return "Account created!! Your account name is " + accountNr + " with initial balance of " + initialBalance;
     }
 
+    @CrossOrigin
     //http://localhost:8080/getBalance/Siim
     @GetMapping("getBalance/{accountNr}")
     public String getBalance(@PathVariable("accountNr") String accountNr) {
@@ -27,24 +29,30 @@ public class BankAccountController {
         return accountNr + " has a balance of " + bankAccountSQLService.getBalance(accountNr);
     }
 
+    @CrossOrigin
+
     //http://localhost:8080/deposit/Raimo/50
-    @PutMapping("deposit/{accountNr}/{deposit}")
+    @PostMapping("deposit/{accountNr}/{deposit}")
     public String deposit(@PathVariable("accountNr") String accountNr,
                           @PathVariable("deposit") double deposit) {
         bankAccountSQLService.deposit(accountNr, deposit);
         return "Deposit made!! Balance is " + bankAccountSQLService.getBalance(accountNr);
     }
 
+    @CrossOrigin
+
     //http://localhost:8080/withdraw/Kaisa/50
-    @PutMapping("withdraw/{accountNr}/{withdraw}")
+    @PostMapping("withdraw/{accountNr}/{withdraw}")
     public String withdraw(@PathVariable("accountNr") String accountNr,
                            @PathVariable("withdraw") double withdraw) {
         bankAccountSQLService.withdraw(accountNr, withdraw);
         return "Withdraw made, new balance of " + accountNr + " is " + bankAccountSQLService.getBalance(accountNr);
     }
 
+    @CrossOrigin
+
     //http://localhost:8080/transfer/Kaisa/Ivan/50
-    @PutMapping("transfer/{from}/{to}/{amount}")
+    @PostMapping("transfer/{from}/{to}/{amount}")
     public String transfer(@PathVariable("from") String fromAccount,
                            @PathVariable("to") String toAccount,
                            @PathVariable("amount") double amount) {
@@ -52,6 +60,8 @@ public class BankAccountController {
         return "Transfer made, from balance is " + bankAccountSQLService.getBalance(fromAccount) +
                 " to balance is " + bankAccountSQLService.getBalance(toAccount);
     }
+
+    @CrossOrigin
 
     @DeleteMapping("deleteOne/{accountNr}")
     public String deleteOne(@PathVariable("accountNr") String accountNr) {

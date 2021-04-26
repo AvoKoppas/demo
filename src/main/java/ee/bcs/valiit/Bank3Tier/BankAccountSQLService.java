@@ -15,12 +15,13 @@ public class BankAccountSQLService {
     private AccountRepository accountRepository;
 
     public void createAccount(String accountNr, Double initialBalance) {
-        accountRepository.getOne(accountNr);
+ //       accountRepository.getOne(accountNr);
+        bankAccountSQLRepo.createAccount(accountNr,initialBalance);
     }
 
     public Double getBalance(String accountNr) {
-        return accountRepository.getOne(accountNr).getBalance();
-  //      return bankAccountSQLRepo.initialBalance(accountNr);
+//        return accountRepository.getOne(accountNr).getBalance();
+        return bankAccountSQLRepo.initialBalance(accountNr);
     }
 
     public void deposit(String accountNr, double deposit) {
