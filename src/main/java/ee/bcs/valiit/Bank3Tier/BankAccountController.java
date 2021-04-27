@@ -62,10 +62,18 @@ public class BankAccountController {
     }
 
     @CrossOrigin
-
+    //http://localhost:8080/deleteOne/Kaisa
     @DeleteMapping("deleteOne/{accountNr}")
     public String deleteOne(@PathVariable("accountNr") String accountNr) {
         bankAccountSQLService.deleteOne(accountNr);
         return "Account has been deleted";
+    }
+
+    @CrossOrigin
+    //http://localhost:8080/deleteAll
+    @DeleteMapping("deleteAll")
+    public String deleteAll() {
+        bankAccountSQLService.deleteAll();
+        return "All data is deleted from table!";
     }
 }

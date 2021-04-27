@@ -36,11 +36,18 @@ public class BankAccountSQLRepo {
         paramMap.put("muutuja2", accountNr);
         jdbcTemplate.update(sql, paramMap);
     }
-    public void deleteOne (String accountNr){
+
+    public void deleteOne(String accountNr) {
         String sql = "DELETE FROM account WHERE account_number =:a";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("a", accountNr);
         jdbcTemplate.update(sql, paramMap);
     }
 
+    public void deleteAll() {
+        String sql = "DELETE FROM account";
+        Map<String, Object> paramMap = new HashMap<>();
+       // paramMap.put("a", accountNr);
+        jdbcTemplate.update(sql, paramMap);
+    }
 }

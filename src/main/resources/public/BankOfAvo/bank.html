@@ -1,24 +1,31 @@
 <!DOCTYPE html>
-<input lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!--    <link rel="stylesheet" href="/css/StyleWebpage.css">-->
     <style>
         body {
-            background-color: powderblue
+            background-color: chocolate;
         }
 
         h1 {
-            color: blue
+            color: #116907
         }
 
         p.test {
-            color: red
+            color: #ff0000
         }
+
     </style>
-    <!--    <link rel="stylesheet" href="/css/StyleWebpage.css">-->
 </head>
 <h1>BANK OF AVO</h1>
+<h4>Tere tulemast kaasaegse panga väravasse, mille kaudu pääsete ligi 22. sajandile!
+</h4>
+<h4> Alustamiseks looge endale isiklik konto ja sisestade esialgne summa, mida oma kontole laadida.
+</h4>
+<h4> Teil on võimalik oma kontole raha lisada ja välja võtta ning ka kahe erineva konto vahel ülekandeid teha.
+</h4>
 
 <ul>
     <li>Konto number
@@ -34,11 +41,12 @@
 </ul>
 
 <button id="Create">Loo konto</button>
-<button id="getBalanceButton">Küsi balanss</button>
+<button id="getBalanceButton">Kontoseis</button>
 <button id="makeDepositButton">Sissemakse</button>
 <button id="withdrawButton">Väljavõte</button>
 <button id="transferButton">Ülekanne</button>
 <button id="deleteButton">Kustutamine</button>
+<button id="deleteAllButton">RESET KONTOD</button>
 <script>
     let accountNr = document.getElementById("Account number");
     let balance = document.getElementById("Initial Balance");
@@ -51,6 +59,8 @@
     let withdrawButton = document.getElementById("withdrawButton");
     let transferButton = document.getElementById("transferButton");
     let deleteButton = document.getElementById("deleteButton");
+    let deleteAllButton = document.getElementById("deleteAllButton");
+
     // GETBALANCE function
     getBalanceButton.onclick = function () {
         let url = "http://localhost:8080/getBalance/"
@@ -147,6 +157,18 @@
             })
     }
 
+    deleteAllButton.onclick = function () {
+        let url = "http://localhost:8080/deleteAll/"
+
+        let configuration5 = {
+            method: 'DELETE'
+        }
+        fetch(url, configuration5)
+            .then(response => response.text())
+            .then(function (response) {
+                alert(response)
+            })
+    }
 
 </script>
 
