@@ -1,8 +1,11 @@
 package ee.bcs.valiit.Bank3Tier;
 
+import ee.bcs.valiit.ClassesCreated.BankAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class BankAccountController {
@@ -80,8 +83,8 @@ public class BankAccountController {
     @CrossOrigin
     //http://localhost:8080/getAllBalance/
     @GetMapping("getAllBalance")
-    public String getAllBalance() {
-        bankAccountSQLService.getAllBalance();
-        return "All accounts here: ";
+    public List<BankAccount> getAllBalance() {
+  //      bankAccountSQLService.getAllBalance();
+        return bankAccountSQLService.getAllBalance();
     }
 }

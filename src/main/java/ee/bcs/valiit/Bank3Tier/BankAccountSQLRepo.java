@@ -1,10 +1,12 @@
 package ee.bcs.valiit.Bank3Tier;
 
+import ee.bcs.valiit.ClassesCreated.BankAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -52,9 +54,9 @@ public class BankAccountSQLRepo {
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public Double getAllBalance() {
+    public List<BankAccount> getAllBalance() {
         String sql = "SELECT * FROM account";
         Map<String, Object> paramMap = new HashMap<>();
-        return jdbcTemplate.queryForObject(sql, paramMap, Double.class);
+        return jdbcTemplate.query(sql, paramMap, new BankAccountRowMapper());
     }
 }
