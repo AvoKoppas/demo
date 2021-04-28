@@ -13,9 +13,10 @@ public class BankAccountSQLService {
     private NamedParameterJdbcTemplate jdbcTemplate;
     @Autowired
     private AccountRepository accountRepository;
+
     public void createAccount(String accountNr, Double initialBalance) {
- //       accountRepository.getOne(accountNr);
-        bankAccountSQLRepo.createAccount(accountNr,initialBalance);
+        //       accountRepository.getOne(accountNr);
+        bankAccountSQLRepo.createAccount(accountNr, initialBalance);
     }
 
     public Double getBalance(String accountNr) {
@@ -59,7 +60,11 @@ public class BankAccountSQLService {
         bankAccountSQLRepo.deleteOne(accountNr);
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         bankAccountSQLRepo.deleteAll();
+    }
+
+    public Double getAllBalance() {
+        return bankAccountSQLRepo.getAllBalance();
     }
 }

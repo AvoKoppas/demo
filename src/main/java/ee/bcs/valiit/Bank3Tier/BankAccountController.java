@@ -76,4 +76,12 @@ public class BankAccountController {
         bankAccountSQLService.deleteAll();
         return "All data is deleted from table!";
     }
+
+    @CrossOrigin
+    //http://localhost:8080/getAllBalance/
+    @GetMapping("getAllBalance")
+    public String getAllBalance() {
+        bankAccountSQLService.getAllBalance();
+        return "All accounts here: ";
+    }
 }

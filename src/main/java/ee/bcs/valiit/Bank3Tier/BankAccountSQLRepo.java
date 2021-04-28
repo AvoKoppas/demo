@@ -14,7 +14,8 @@ public class BankAccountSQLRepo {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     public String createAccount(String accountNr, double initialBalance) {
-        String sql = "INSERT INTO account (account_number, balance) VALUES (:muutuja1, :muutuja2)";
+        String sql = "INSERT INTO account (account_number, balance) " +
+                "VALUES (:muutuja1, :muutuja2)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("muutuja1", accountNr);
         paramMap.put("muutuja2", initialBalance);
@@ -47,7 +48,13 @@ public class BankAccountSQLRepo {
     public void deleteAll() {
         String sql = "DELETE FROM account";
         Map<String, Object> paramMap = new HashMap<>();
-       // paramMap.put("a", accountNr);
+        // paramMap.put("a", accountNr);
         jdbcTemplate.update(sql, paramMap);
+    }
+
+    public Double getAllBalance() {
+        String sql = "SELECT * FROM account";
+        Map<String, Object> paramMap = new HashMap<>();
+        return jdbcTemplate.queryForObject(sql, paramMap, Double.class);
     }
 }
