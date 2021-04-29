@@ -24,10 +24,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-//                .anyRequest().authenticated()
+                .antMatchers("/login/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .addFilterBefore(new JwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new JwtTokenFilter(),
+                        UsernamePasswordAuthenticationFilter.class);
         http.csrf().disable();
     }
 
@@ -38,8 +39,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         String encodedPassword = ""; // from DB by userName
         return bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
     }
-    public void savePassword(String password){
+
+    public void savePassword(String password) {
         String encodedPassword = passwordEncoder().encode(password);
     }
-
 }

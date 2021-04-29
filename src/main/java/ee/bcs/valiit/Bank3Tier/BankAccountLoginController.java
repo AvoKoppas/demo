@@ -11,19 +11,19 @@ import java.util.Date;
 
 @RestController
 public class BankAccountLoginController {
-
-    @PostMapping
-    public String login(@PathVariable("login") LoginRequest loginRequest) {
+    //http://localhost:8080/login/Tiit/rull
+    @PostMapping("login/{user}/{password}")
+    public String login(@PathVariable("user") String user,
+                        @PathVariable("password") String password) {
         Date today = new Date();
-        Date tokenExpirationDate = new Date(today.getTime() + 1000 * 60);
+        Date tokenExpirationDate = new Date(today.getTime() + 1000 * 60 * 60);
         JwtBuilder jwtBuilder = Jwts.builder()
                 .setExpiration(tokenExpirationDate)
                 .setIssuedAt(new Date())
                 .setIssuer("issuer")
                 .signWith(SignatureAlgorithm.HS256, "secret")
-                .claim("username", userName);
+                .claim("user", user);
         String jwt = jwtBuilder.compact();
-        return "Generated";
+        return jwtBuilder.compact();
     }
-
 }
