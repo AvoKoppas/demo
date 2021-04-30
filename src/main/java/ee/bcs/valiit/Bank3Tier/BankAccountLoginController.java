@@ -26,4 +26,5 @@ public class BankAccountLoginController {
         String jwt = jwtBuilder.compact();
         return jwtBuilder.compact();
     }
+
 }
